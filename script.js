@@ -16,19 +16,16 @@ document.addEventListener("DOMContentLoaded", function() {
             else console.log(`Erreur lorsqu'on a tenté de récupérer les data`);
         })
         .then(data => {
+
+            const myDate = new Date();
+            const curr_day  = myDate.getDay();
+            let d_names = ["Sunday","Monday", "Tuesday", "Wednesday", 
+            "Thursday", "Friday", "Saturday"];
+            let theDay = d_names[curr_day];
+            document.querySelector('#printDay').innerHTML = `${theDay}`
+
             let donGeo = data.results[0].geometry;
             console.log(donGeo);
-//Afficher la date du jour
-//  function AfficherJOur(){
-    const birthday = new Date('August 19, 1975 23:15:30');
-    const day1 = birthday.getDay();
-    // Sunday - Saturday : 0 - 6
-    
-    console.log(day1);
-    // expected output: 2
-//  };
-
-//Afficher l'icon;
             let lat = donGeo.lat;
             let lon = donGeo.lng;
 
@@ -46,19 +43,16 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(data => {
                 let meteo = data.current.weather[0].id;
                 console.log(meteo);
-                function AfficherMeteo(icon){
-                    document.querySelector('#printIcon').src = `./icone/${icon}`;
-                 };
                 if(meteo == 800){
-                    AfficherMeteo(sun.svg);
+                    document.querySelector('#printIcon').src = `./icone/sun.svg`;
                 }else if(meteo>=600 && meteo<=622){
-                    AfficherMeteo(snow.svg);
-                }else if(meteo>800){
-                    AfficherMeteo(cloud.svg);
+                    document.querySelector('#printIcon').src = `./icone/snow.svg`;
+                }else if(meteo > 800){
+                    document.querySelector('#printIcon').src = `./icone/clouds.svg`;
                 }else if(meteo>=200 && meteo<=531){
-                    AfficherMeteo(rain.svg);
+                    document.querySelector('#printIcon').src = `./icone/rain.svg`;
                 }else if(meteo>=701 && meteo<=781){
-                    AfficherMeteo(cloudy.svg);
+                    document.querySelector('#printIcon').src = `./icone/cloudy.svg`;
                 }
        
             })
