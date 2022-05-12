@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
     let updateButton = document.getElementById("submit");
     updateButton.addEventListener("click", (event) => { //au click 
         event.preventDefault();
@@ -18,17 +17,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 const myDate = new Date();
                 const curr_day = myDate.getDay(); //extraire l'index de ma journee
                 let d_names = ["Sunday", "Monday", "Tuesday", "Wednesday",
+                    "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday",
                     "Thursday", "Friday", "Saturday"];
                 let theDay = d_names[curr_day];//associer l'index au nom de ma journee
-                //afficher une journée
-                document.querySelector('#printDay').innerHTML = `${theDay}`  //Afficher le jour de la semaine dans son emplacment
-                //afficher  5jours de la semaine a partir d'aujourd'hui.
-                let i = theDay%6;
-                for(i = 0; i <= d_names.length-2 ; i++){
-                    let e = d_names[i];
-                    console.log(e);
-                    document.getElementById("printWeek").textContent = `<h3>${e}</h3>`;
-                }
+                // afficher une journée
+                // document.querySelector('#printDay').innerHTML = `${theDay}`  
+                // afficher  5jours de la semaine a partir d'aujourd'hui:
+                for(let i = 0; i < 5 ; i++){
+                    theDay = d_names[curr_day + i];
+                     console.log(theDay);
+                     let element = document.createElement("h3");
+                     let newDiv = document.getElementById("printWeek");
+                     newDiv.appendChild(element).innerHTML = `${theDay}`;
+                 }
                 let donGeo = data.results[0].geometry;// extraire lattitude et longitude de ma ville
                 console.log(donGeo);
                 let lat = donGeo.lat;//lattitude
@@ -43,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         else console.log(`Erreur lorsqu'on a tenté de récupérer les data`);
                     })
                     .then(data => {
+                        
                         let meteo = data.current.weather[0].id; // recuperer la meteo de mon l'APi
                         console.log(meteo);
                         //afficher l'icone  de la meteo relatif a l'id 

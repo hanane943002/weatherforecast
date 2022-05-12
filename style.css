@@ -1,7 +1,13 @@
 body{
-    background-color: aqua;
+    background-color: rgb(204, 220, 238);
+}
+h1{
+    font-size: 5rem;
 }
 form{
     display: inline-flex;
     text-align: center;
+}
+.div_meteo {
+    gap: 4rem;
 }
