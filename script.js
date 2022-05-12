@@ -25,11 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 // afficher  5jours de la semaine a partir d'aujourd'hui:
                 for(let i = 0; i < 5 ; i++){
                     theDay = d_names[curr_day + i];
-                     console.log(theDay);
                      let element = document.createElement("h3");
                      let newDiv = document.getElementById("printWeek");
                      newDiv.appendChild(element).innerHTML = `${theDay}`;
-                 }
                 let donGeo = data.results[0].geometry;// extraire lattitude et longitude de ma ville
                 console.log(donGeo);
                 let lat = donGeo.lat;//lattitude
@@ -44,23 +42,32 @@ document.addEventListener("DOMContentLoaded", function () {
                         else console.log(`Erreur lorsqu'on a tenté de récupérer les data`);
                     })
                     .then(data => {
-                        
-                        let meteo = data.current.weather[0].id; // recuperer la meteo de mon l'APi
-                        console.log(meteo);
+                        let meteo = data.daily[i].weather[0].id; // recuperer la meteo de mon l'APi
                         //afficher l'icone  de la meteo relatif a l'id 
                         if (meteo == 800) {
-                            document.querySelector('#printIcon').src = `./icone/sun.svg`; 
+                            let element2 = document.createElement("img");
+                            let newDiv2 = document.getElementById("printIcon");
+                            newDiv2.appendChild(element2).src = `./icone/sun.svg`; 
                         } else if (meteo >= 600 && meteo <= 622) {
-                            document.querySelector('#printIcon').src = `./icone/snow.svg`;
+                            let element2 = document.createElement("img");
+                            let newDiv2 = document.getElementById("printIcon");
+                            newDiv2.appendChild(element2).src = `./icone/snow.svg`;
                         } else if (meteo > 800) {
-                            document.querySelector('#printIcon').src = `./icone/clouds.svg`;
+                            let element2 = document.createElement("img");
+                            let newDiv2 = document.getElementById("printIcon");
+                            newDiv2.appendChild(element2).src = `./icone/clouds.svg`;
                         } else if (meteo >= 200 && meteo <= 531) {
-                            document.querySelector('#printIcon').src = `./icone/rain.svg`;
+                            let element2 = document.createElement("img");
+                            let newDiv2 = document.getElementById("printIcon");
+                            newDiv2.appendChild(element2).src = `./icone/rain.svg`;
                         } else if (meteo >= 701 && meteo <= 781) {
-                            document.querySelector('#printIcon').src = `./icone/cloudy.svg`;
+                            let element2 = document.createElement("img");
+                            let newDiv2 = document.getElementById("printIcon");
+                            newDiv2.appendChild(element2).src = `./icone/cloudy.svg`;
                         }
                     })
                     .catch(err => console.log(err))
+                }    
             })
             .catch(err => console.log(err))
     });
