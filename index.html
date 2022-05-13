@@ -15,13 +15,23 @@
 </head>
     <body>
         <header>
-            <div class="container">
+            <div class="container mb-5">
                 <div class="row text-center pb-5">
                     <h1>Weather App</h1> 
                  </div>
                 <div class="row">
                     <form class="form-inline">
                         <input type="text"  class="form-control-plaintext" placeholder="Entrez le nom de la ville" id="ville" value="">
+                        <select class="form-select" aria-label="Default select example" id="nbOfDay">
+                            <option selected>How many days?</option>
+                            <option value="1">1 day</option>
+                            <option value="2">2 days</option>
+                            <option value="3">3 days</option>
+                            <option value="4">4 days</option>
+                            <option value="5">5 days</option>
+                            <option value="6">6 days</option>
+                            <option value="7">7 days</option>
+                          </select>
                         <button type="submit" id="submit" class="btn btn-primary ">Submit</button>
                     </form>
                 </div>  
@@ -32,7 +42,7 @@
             <div>
                 <div class="d-flex text-center d-inline div_meteo w-25" id="printWeek">
                 </div>
-                <div class="d-flex text-center d-inline w-5" id="printIcon" >
+                <div class="d-flex text-center d-inline  div_Icon " id="printIcon" >
                 </div>
             </div>
         </div>

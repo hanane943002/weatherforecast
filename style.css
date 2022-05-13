@@ -7,7 +7,11 @@ h1{
 form{
     display: inline-flex;
     text-align: center;
+    gap: 3rem;
 }
 .div_meteo {
-    gap: 4rem;
+    gap: 5rem;
+}
+.div_Icon{
+    gap: 6rem; 
 }

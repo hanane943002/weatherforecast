@@ -23,7 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 // afficher une journée
                 // document.querySelector('#printDay').innerHTML = `${theDay}`  
                 // afficher  5jours de la semaine a partir d'aujourd'hui:
-                for(let i = 0; i < 5 ; i++){
+                let select = document.getElementById('nbOfDay');
+                let valueNbrOfDay = select.options[select.selectedIndex].value;
+                for(let i = 0; i < valueNbrOfDay ; i++){
                     theDay = d_names[curr_day + i];
                      let element = document.createElement("h3");
                      let newDiv = document.getElementById("printWeek");
@@ -48,22 +50,31 @@ document.addEventListener("DOMContentLoaded", function () {
                             let element2 = document.createElement("img");
                             let newDiv2 = document.getElementById("printIcon");
                             newDiv2.appendChild(element2).src = `./icone/sun.svg`; 
+                            element2.style.width = "5rem";
+
                         } else if (meteo >= 600 && meteo <= 622) {
                             let element2 = document.createElement("img");
                             let newDiv2 = document.getElementById("printIcon");
                             newDiv2.appendChild(element2).src = `./icone/snow.svg`;
+                            element2.style.width = "5rem";
+
                         } else if (meteo > 800) {
                             let element2 = document.createElement("img");
                             let newDiv2 = document.getElementById("printIcon");
                             newDiv2.appendChild(element2).src = `./icone/clouds.svg`;
+                            element2.style.width = "5rem";
+
                         } else if (meteo >= 200 && meteo <= 531) {
                             let element2 = document.createElement("img");
                             let newDiv2 = document.getElementById("printIcon");
                             newDiv2.appendChild(element2).src = `./icone/rain.svg`;
+                            element2.style.width = "5rem";
+
                         } else if (meteo >= 701 && meteo <= 781) {
                             let element2 = document.createElement("img");
                             let newDiv2 = document.getElementById("printIcon");
                             newDiv2.appendChild(element2).src = `./icone/cloudy.svg`;
+                            element2.style.width = "5rem";
                         }
                     })
                     .catch(err => console.log(err))
